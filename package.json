@@ -1,0 +1,40 @@
+{
+  "name": "site-clone-agent",
+  "version": "1.0.0",
+  "description": "AI agent for site cloning and effect extraction",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "agent": "node src/orchestrator/agent-cli.js",
+    "extract": "node src/extractor/playwright-scraper.js",
+    "extract:multi": "node src/crawler/multi-page-scraper.js",
+    "postextract": "node src/utils/agent-guardian.js init",
+    "extract:no-video": "node src/extractor/playwright-scraper.js --no-video",
+    "postextract:no-video": "node src/utils/agent-guardian.js init",
+    "extract:light": "node src/extractor/playwright-scraper.js --no-video --no-images",
+    "postextract:light": "node src/utils/agent-guardian.js init",
+    "start": "node src/index.js",
+    "sync": "node src/index.js --sync-only",
+    "build:static": "node src/utils/static-builder.js",
+    "rebrand": "node src/utils/content-rebrander.js",
+    "postrebrand": "node src/index.js --sync-only",
+    "rebrand:dict": "node src/utils/content-rebrander.js --dict-only",
+    "postrebrand:dict": "node src/index.js --sync-only",
+    "generate:base": "node src/generator/code-synthesizer.js",
+    "generate:llm": "node src/generator/llm-builder.js",
+    "guard": "node src/utils/agent-guardian.js watch",
+    "guard:init": "node src/utils/agent-guardian.js init",
+    "verify": "node src/utils/agent-guardian.js verify",
+    "verify:ui": "node src/utils/agent-guardian.js verify --headed",
+    "snapshot": "node src/utils/agent-guardian.js snapshot",
+    "rollback": "node src/utils/agent-guardian.js rollback",
+    "history": "node src/utils/agent-guardian.js list",
+    "reset-golden": "node src/utils/agent-guardian.js reset"
+  },
+  "dependencies": {
+    "axios": "^1.21.0",
+    "cheerio": "^1.2.0",
+    "dotenv": "^16.4.5",
+    "playwright": "^1.48.0"
+  }
+}

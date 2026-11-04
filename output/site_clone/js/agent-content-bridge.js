@@ -1,0 +1,1 @@
+(async function(){ try{ const r = await fetch('./content.json'); if(r.ok){ const d = await r.json(); /* Здесь логика моста */ } }catch(e){} })();
